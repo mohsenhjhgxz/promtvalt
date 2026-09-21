@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #07080d;
+    --bg-surface: #0e121c;
+    --bg-surface-elevated: #151a28;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-glow: rgba(0, 245, 255, 0.35);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+  }
+
+  html.light {
+    --bg-primary: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #f1f5f9;
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --border-glow: rgba(14, 165, 233, 0.35);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+  }
+
+  html[dir="rtl"] {
+    font-family: 'Vazirmatn', 'Outfit', system-ui, sans-serif;
+  }
+
+  html[dir="ltr"] {
+    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Glassmorphism & Cyberpunk Effects */
+.glass-panel {
+  background: rgba(14, 18, 28, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.glow-card {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 245, 255, 0.5);
+  box-shadow: 0 12px 30px -10px rgba(0, 245, 255, 0.18), 0 0 15px 0 rgba(168, 85, 247, 0.15);
+}
+
+.light .glow-card:hover {
+  box-shadow: 0 12px 30px -10px rgba(14, 165, 233, 0.2);
+}
+
+/* Neon text accents */
+.text-neon-cyan {
+  color: #00f5ff;
+  text-shadow: 0 0 16px rgba(0, 245, 255, 0.4);
+}
+
+.text-neon-violet {
+  color: #c084fc;
+  text-shadow: 0 0 16px rgba(192, 132, 252, 0.4);
+}
+
+.text-neon-amber {
+  color: #fbbf24;
+  text-shadow: 0 0 16px rgba(251, 191, 36, 0.4);
+}
+
+/* Cyber ambient grid */
+.cyber-grid-bg {
+  background-image: radial-gradient(circle at 50% 0%, rgba(0, 245, 255, 0.07) 0%, transparent 60%),
+                    radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+.light .cyber-grid-bg {
+  background-image: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                    linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #07080d;
+}
+.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f5ff;
+}
+
+/* Subtle glowing pulse */
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+.animate-pulse-subtle {
+  animation: neonPulse 4s ease-in-out infinite;
+}
